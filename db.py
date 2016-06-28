@@ -145,7 +145,7 @@ class DB(object):
         inputs = ''
         index = 0
         for x in params_dic.keys():
-            inputs = inputs + " AND " if index > 0 else '' + " %s" % (x) + "=%s"
+            inputs = inputs + (" AND " if index > 0 else '') + x.__str__() + "=%s"  
             index += 1
         values = map(lambda x: str(x),params_dic.values())
         sql = u"select %s from %s WHERE %s" %(columns,table_name,inputs)
